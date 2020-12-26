@@ -13,7 +13,7 @@ public class Test {
 	
 	public static void main(String[] args) {
 		Test t = new Test();
-		t.cal(1, 1, 2);
+		t.cal(1, 1, 3);
 		
 	}
 }
