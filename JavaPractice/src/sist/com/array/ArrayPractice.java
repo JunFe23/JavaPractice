@@ -1,9 +1,46 @@
 package sist.com.array;
 
+import java.util.Scanner;
+
 public class ArrayPractice {
+	Scanner sc=new Scanner(System.in);
 	int []m=new int[ArrayPractice.LEN];
 	final static int LEN = 5;
 	int cnt=0;
+	
+	public void inputData() {
+		System.out.println("원하시는 메뉴를 선택해주세요. 1.add 2.modify 3.delete 4.clear");
+		int input = sc.nextInt();
+		switch(input) {
+			case 1:
+				System.out.println("add할 숫자를 입력해주세요.");
+				int add1=sc.nextInt();
+				add(add1);
+				disp();
+				inputData();
+			case 2:
+				System.out.println("modify할 숫자를 입력해주세요.(ex)모든 50을 10으로 바꿀 경우-50 10 a 입력");
+				int fData=sc.nextInt(), sData=sc.nextInt();
+				char state=sc.next().charAt(0);
+				modify(fData, sData, state);
+				disp();
+				inputData();
+			case 3:
+				System.out.println("delete할 숫자를 입력해주세요.(ex)모든 50을 지울 경우 - 50 a 입력");
+				int delData=sc.nextInt();
+				char delState=sc.next().charAt(0);
+				delete(delData, delState);
+				disp(); 
+				inputData();
+			case 4:
+				System.out.println("Data를 clear 하시겠습니까? y/n");
+				char check = sc.next().charAt(0);
+				if(check=='n') disp();
+				else clear();
+				disp();
+				inputData();
+		}
+		}
 	
 	public boolean isFull() {
 		return cnt>=m.length;
@@ -58,8 +95,8 @@ public class ArrayPractice {
 		return -1;
 	}
 	
-	public void deleteOrigin(int data) {
-		for (int i = 0; i < m.length; i++) {
+	public void deleteOrigin(int index) {
+		for (int i = index; i < m.length; i++) {
 			if(i==m.length-1) {
 				m[i]=0;
 				break;
@@ -71,14 +108,14 @@ public class ArrayPractice {
 	public void delete(int data, char state) {
 		int index=search(data);
 		if(index==-1) return;
-		deleteOrigin(data);
+		deleteOrigin(index);
 		if(state=='a') delete(data, state);
 	}
 	
 	public void delete(int data, int fromIndex) {
 		int index=search(data, fromIndex);
 		if(index==-1) return;
-		deleteOrigin(data);
+		deleteOrigin(index);
 	}
 	
 	public void modify(int fData, int sData, char state) {
@@ -102,12 +139,13 @@ public class ArrayPractice {
 	
 	public static void main(String[] args) {
 		ArrayPractice a=new ArrayPractice();
-		a.add(10);
+/*		a.add(10);
 		a.add(10,20);
 		a.add(30,40);
 		a.add(30,40);
-		//a.delete(10,'a');
-		//a.modify(40, 60, 'a');
+		a.delete(40,'a');
 		a.disp();
+*/		//a.modify(40, 60, 'a');
+		a.inputData();
 	}
 }
