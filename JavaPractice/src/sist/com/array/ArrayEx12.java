@@ -1,8 +1,6 @@
 package sist.com.array;
 
-import java.util.Arrays;
 
-import org.omg.CORBA.IdentifierHelper;
 
 public class ArrayEx12 { 
    int []m=new int [ArrayEx12.LEN];//[99][9][76][67][91] 76?
