@@ -78,7 +78,6 @@ public class BoardMain {
       Board board=getBoard(index);
       System.out.println("Modifywriter:");
       board.setWriter(scanner.next());
-      
       System.out.println("Modifysubject:");
       board.setSubject(scanner.next());
       System.out.println("password:");
