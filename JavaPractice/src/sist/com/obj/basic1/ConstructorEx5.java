@@ -2,6 +2,8 @@ package sist.com.obj.basic1;
 
 import java.util.Calendar;
 
+import sist.com.obj.basic2.Man;
+
 public class ConstructorEx5 {
    
    public void makerEx1() {

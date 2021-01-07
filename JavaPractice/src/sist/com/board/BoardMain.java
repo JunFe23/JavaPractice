@@ -115,7 +115,7 @@ public class BoardMain {
          break;
       case 3:
          infoBoard();
-         break;
+         break; 
       case 4:
          modifyBoard();
          break;
