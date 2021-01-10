@@ -33,6 +33,7 @@ public class 성적메인 {
 		
 		정보 info=new 정보();
 		int num;
+		String grade;
 		do {
 			System.out.println("Num : ");
 			num=sc.nextInt();
