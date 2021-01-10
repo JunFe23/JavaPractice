@@ -7,8 +7,8 @@ public class 정보 {
 	private int eng;
 	private int math;
 	private int total;
-	private int avg;
-	private int no;
+	private double avg;
+	private int rank;
 	private String grade;
 	
 	public int getNum() {
@@ -47,17 +47,17 @@ public class 정보 {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-	public int getAvg() {
+	public double getAvg() {
 		return avg;
 	}
-	public void setAvg(int avg) {
+	public void setAvg(double avg) {
 		this.avg = avg;
 	}
-	public int getNo() {
-		return no;
+	public int getRank() {
+		return rank;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setRank(int rank) {
+		this.rank = rank;
 	}
 	public String getGrade() {
 		return grade;
@@ -68,7 +68,7 @@ public class 정보 {
 	@Override
 	public String toString() {
 		return "정보 [num=" + num + ", name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + ", total="
-				+ total + ", avg=" + avg + ", no=" + no + ", grade=" + grade + "]";
+				+ total + ", avg=" + avg + ", rank=" + rank + ", grade=" + grade + "]";
 	}
 	
 	
