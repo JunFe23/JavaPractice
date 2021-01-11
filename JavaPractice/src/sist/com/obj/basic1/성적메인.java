@@ -33,7 +33,6 @@ public class 성적메인 {
 		
 		정보 info=new 정보();
 		int num;
-		String grade;
 		do {
 			System.out.println("Num : ");
 			num=sc.nextInt();
@@ -51,18 +50,29 @@ public class 성적메인 {
 		info.setTotal(total);
 		double avg=total/3;
 		info.setAvg(avg);
-		switch((int)avg/10) {
+		getGrade(avg);
+		/*switch((int)avg/10) {
 			case 10: case 9:
-				info.setGrade("A");
+				grade="A";
+				info.setGrade(grade);
+				break;
 			case 8:
-				info.setGrade("B");
+				grade="B";
+				info.setGrade(grade);
+				break;
 			case 7:
-				info.setGrade("C");
+				grade="C";
+				info.setGrade(grade);
+				break;
 			case 6:
-				info.setGrade("D");
+				grade="D";
+				info.setGrade(grade);
+				break;
 			default:
-				info.setGrade("F");
-		}
+				grade="F";
+				info.setGrade(grade);
+				break;
+		}*/
 		if(isFull()) increment();
 		informations[cnt++]=info;
 		rankCal();
@@ -143,7 +153,25 @@ public class 성적메인 {
 		}
 	}
 	
-	
+	public void getGrade(double avg) {
+		switch((int)avg/10) {
+		case 10: case 9:
+			info.setGrade("A");
+			break;
+		case 8:
+			info.setGrade("B");
+			break;
+		case 7:
+			info.setGrade("C");
+			break;
+		case 6:
+			info.setGrade("D");
+			break;
+		default:
+			info.setGrade("F");
+			break;
+	}
+	}
 	
 	public void modify() {
 		System.out.println("수정할 성적번호 : ");
