@@ -60,7 +60,18 @@ public class 정보 {
 		this.rank = rank;
 	}
 	public String getGrade() {
-		return grade;
+		switch((int)getAvg()/10) {
+		case 10: case 9:
+			return "A";
+		case 8:
+			return "B";
+		case 7:
+			return "C";
+		case 6:
+			return "D";
+		default:
+			return "F";
+		}
 	}
 	public void setGrade(String grade) {
 		this.grade = grade;
@@ -68,7 +79,7 @@ public class 정보 {
 	@Override
 	public String toString() {
 		return "정보 [num=" + num + ", name=" + name + ", kor=" + kor + ", eng=" + eng + ", math=" + math + ", total="
-				+ total + ", avg=" + avg + ", rank=" + rank + ", grade=" + grade + "]";
+				+ total + ", avg=" + avg + ", rank=" + rank + ", grade=" + this.getGrade() + "]";
 	}
 	
 	

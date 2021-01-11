@@ -50,7 +50,7 @@ public class 성적메인 {
 		info.setTotal(total);
 		double avg=total/3;
 		info.setAvg(avg);
-		getGrade(avg);
+		
 		/*switch((int)avg/10) {
 			case 10: case 9:
 				grade="A";
@@ -153,25 +153,7 @@ public class 성적메인 {
 		}
 	}
 	
-	public void getGrade(double avg) {
-		switch((int)avg/10) {
-		case 10: case 9:
-			info.setGrade("A");
-			break;
-		case 8:
-			info.setGrade("B");
-			break;
-		case 7:
-			info.setGrade("C");
-			break;
-		case 6:
-			info.setGrade("D");
-			break;
-		default:
-			info.setGrade("F");
-			break;
-	}
-	}
+	
 	
 	public void modify() {
 		System.out.println("수정할 성적번호 : ");
