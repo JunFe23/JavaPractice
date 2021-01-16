@@ -1,21 +1,18 @@
 package sist.com.obj.core4;
 
-public class AdminService extends AbstractService{
-
-	private Dao dao;
+public class MapService extends AbstractService{
+	private Dao dao; // 인터페이스 dao , 의존성 없는 상태
 	
-	
-	
-	public AdminService(Dao dao) {
+	public MapService(Dao dao) {
 		super();
-		this.dao = dao;
+		this.dao = dao; // 의존 주입
 	}
 
 	@Override
 	public void fileUpload() {
 		// TODO Auto-generated method stub
 		dao.select();
-		System.out.println("AdminServiceselect");
+		System.out.println("MapServicefileUpload");
 	}
 
 	@Override
@@ -23,6 +20,5 @@ public class AdminService extends AbstractService{
 		// TODO Auto-generated method stub
 		
 	}
-	
 
 }

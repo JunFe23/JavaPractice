@@ -1,5 +1,7 @@
 package sist.com.obj.core4;
 
-public class Dao {
-
+public interface Dao {
+	public void select();
+	public void delete(); 
+	public void update(); 
 }

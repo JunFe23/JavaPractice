@@ -10,8 +10,9 @@ public class ExceptionEx2 {
 		list.add("½Â¿ìÃÖ");
 		list.add(24);
 		list.add(10.5);
-		/*if(list.get(1) instanceof Integer)
-		System.out.println(Integer.parseInt(String.valueOf((Integer)list.get(1))));*/
+		if(list.get(1) instanceof Integer)
+		System.out.println(Integer.parseInt(String.valueOf((Integer)list.get(1))));
+		System.out.println(Integer.parseInt(list.get(1).toString()));
 		
 		Double d = (Double)list.get(2)+2;
 		System.out.println(d);
