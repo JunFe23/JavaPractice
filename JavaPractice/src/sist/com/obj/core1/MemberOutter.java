@@ -5,7 +5,9 @@ public class MemberOutter {
 	MemberInner inner=new MemberInner();
 	private void outterMethod() {
 		System.out.println("outterMethod");
-		inner.innerMethod();
+		return;
+		//inner.innerMethod();
+		
 	}
 	public class MemberInner{
 		private int innerValue;

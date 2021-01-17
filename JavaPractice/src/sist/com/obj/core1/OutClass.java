@@ -14,6 +14,7 @@ public class OutClass {
 	}
 	
 	
+	
 	public static void main(String[] args) {
 		OutClass.Inner i = new OutClass.Inner();
 	}
