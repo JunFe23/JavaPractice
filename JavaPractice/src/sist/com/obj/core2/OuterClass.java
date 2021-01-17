@@ -12,8 +12,7 @@ public class OuterClass {
  
  //멤버 내부 클래스
  class InnerClass{
-//    static String siv = "StaticInnerValue"; // 빨간줄 뜸.
-    //왜? 인스턴스가 만들어지기도 전에 안쪽에서 미리 static변수가 만들어 질 수 없기 때문.. 
+//    static String siv = "StaticInnerValue"; // 외부가 생성되기 전에 내부가 먼저 static이 될수 없기 때문에 
     String iv = "InnerValue";
     
     InnerClass(){
