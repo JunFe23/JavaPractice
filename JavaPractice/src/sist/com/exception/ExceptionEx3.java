@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
-// Exception ( try catch finally throws throw userException
+// Exception ( try catch finally throws throw userException )
 // finally로는 무조건 간다.
 
 // Compile, RunTime
@@ -43,7 +43,7 @@ public class ExceptionEx3 {
 		String str1 = null;
 		String str2 = "efghi";
 		try {
-			str1.charAt(-10);
+			str2.charAt(-10);
 			
 		} catch (StringIndexOutOfBoundsException e) {
 			// TODO: handle exception

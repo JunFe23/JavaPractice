@@ -8,7 +8,7 @@ public class ExceptionEx5 {
 			if(data==10) {
 				throw new InterruptedException(); // throw는 강제로 exception을 발생시키는 것, throws는 던지는 것
 			}else if(data==20) {
-				throw new ArrayIndexOutOfBoundsException();
+				throw new ArrayIndexOutOfBoundsException("정연짱");
 			}else if(data==30) {
 				throw new ArithmeticException();
 			}
@@ -37,7 +37,7 @@ public class ExceptionEx5 {
 			}else if(data==30) {
 				throw new ArithmeticException();
 			}
-		} catch (Exception e) {
+		} catch (Exception e) { // Exception 하나로 받음.
 			// TODO: handle exception
 			if(e instanceof InterruptedException) {
 				System.out.println("InterruptedException");
@@ -54,7 +54,7 @@ public class ExceptionEx5 {
 	
 	public static void main(String[] args) {
 		ExceptionEx5 e = new ExceptionEx5();
-		//e.exceptionEx1(20);
-		e.exceptionEx2(30);
+		e.exceptionEx1(20);
+		//e.exceptionEx2(30);
 	}
 }

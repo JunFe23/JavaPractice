@@ -20,18 +20,18 @@ public class ExceptionEx4 {
 		
 	}
 	
-	public void exceptionEx1() throws InterruptedException, IOException, CloneNotSupportedException { // 실행한 곳으로 던짐, 여기서는 exception 2로
+	public void exceptionEx1() throws InterruptedException, IOException, CloneNotSupportedException  { // 실행한 곳으로 던짐, 여기서는 exception 2로
 		Thread.sleep(1000);
 		System.in.read();
 		this.clone();
 		
 	}
 	
-	public void exceptionEx2() throws InterruptedException, IOException, CloneNotSupportedException { // exception3로
+	public void exceptionEx2() throws InterruptedException, IOException, CloneNotSupportedException   { // exception3로
 		exceptionEx1();
 	}
 	
-	public void exceptionEx3() throws InterruptedException, IOException, CloneNotSupportedException{ // main으로 던짐
+	public void exceptionEx3() throws InterruptedException, IOException, CloneNotSupportedException { // main으로 던짐
 		exceptionEx2();
 	}
 	
