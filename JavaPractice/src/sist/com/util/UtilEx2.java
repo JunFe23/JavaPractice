@@ -52,7 +52,7 @@ public class UtilEx2 {
 		System.out.println(set1.iterator().next());
 		System.out.println(set1.iterator().next());
 		
-		set2=(HashSet<String>)set1.clone(); // set1을 set2에 복
+		set2=(HashSet<String>)set1.clone(); // set1을 set2에 복제
 		System.out.println(set1);
 		System.out.println(set2);
 		

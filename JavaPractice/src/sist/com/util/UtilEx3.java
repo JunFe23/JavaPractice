@@ -24,8 +24,8 @@ public class UtilEx3 {
       map.put(3, "피트");//key|value
       
       
-      //map.clear(); // map 안을 clear함.
-      //System.out.println(map.containsKey(10)); // key값이 10인 map data가 있는가? No
+//      map.clear(); // map 안을 clear함.
+//      System.out.println(map.containsKey(10)); // key값이 10인 map data가 있는가? No
       //System.out.println(map.containsValue("졸리")); // Value값이 '졸리'인 map data가 있는가? ?Yes
       map.replace(2, "찰리"); // map에서 key값이 2인 곳의 Value값을 "찰리"로 대체해라
       //System.out.println(map); // {1=찬미, 2=찰리, 3=피트} 출력

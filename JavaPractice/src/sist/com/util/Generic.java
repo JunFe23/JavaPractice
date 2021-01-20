@@ -7,9 +7,10 @@ public class Generic<E> {
 		
 	}
 	
+	
 	public static void main(String[] args) {
 		Generic<Integer>g=new Generic<Integer>();
 		g.add(2);
-		System.out.println();
+		System.out.println(g);
 	}
 }
