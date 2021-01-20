@@ -4,7 +4,7 @@ import java.util.*;
 
 //LIST, MAP, SET
 public class UtilEx1 {
-	public void utilExmethod1() {
+	public void utilExMethod1() {
 		ArrayList<Double>list1 = new ArrayList<Double>(10); // elementsData Double형 배열
 		//ArrayList<String>list2 = new ArrayList<String>(); // elementsData String형 배열
 		
@@ -47,7 +47,7 @@ public class UtilEx1 {
 	
 	public static void main(String[] args) {
 		UtilEx1 u = new UtilEx1();
-		u.utilExmethod1();
+		u.utilExMethod1();
 
 	}
 }
