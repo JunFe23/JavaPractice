@@ -1,28 +1,96 @@
 package sist.com.util2;
 
-import java.util.Stack;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.ListIterator;
+import java.util.Vector;
 
 public class UtilEx4 {
-	
-	public void stackMethod() {
-		Stack<String> stack = new Stack<String>(); // 선입후출
-		stack.push("A"); // 순서대로 stack에 넣음
-		stack.push("B");
-		stack.push("C");
-		stack.push("D");
-		System.out.println(stack.pop()); // 맨 마지막에 들어감 D꺼냄
-		System.out.println(stack.peek()); // 3번째 들어간 C
-		System.out.println(stack.peek()); // C
-		System.out.println(stack.pop()); // C꺼내면서 C출력
-		System.out.println(stack.pop()); // 2번째 들어간 B 꺼내면서 B 출력
-		System.out.println(stack.peek()); // 남아있는 A출력
-		System.out.println(stack.search("A"));
-		stack.clear();
-		System.out.println(stack.empty()); // true
+
+	public void listMethod1() {
+		Vector<String> v1 = new Vector<String>();
+		v1.addElement("준철");
+		v1.addElement("우석");
+		v1.addElement("지훈");
+		v1.addElement("동진");
+		v1.addElement("민균");
+		
+		/*for (int i = 0; i < v1.size(); i++) {
+			//System.out.println(v1.get(i));
+			System.out.println(v1.elementAt(i));
+		}*/
+		Iterator<String> i = v1.iterator();
+		while(i.hasNext()) {
+			System.out.println(i.next());
+		}
+		System.out.println();
+		
+		i = v1.iterator(); // 기존 변수 i는 그대로 가면서 iterator 객체 새로 생성
+		for(;i.hasNext();) {
+			System.out.println(i.next());
+		}
+		System.out.println();
+		
+		Enumeration<String>e = v1.elements(); // 이것 또한 반복자다. StringTokenizer랑 비슷 
+		while(e.hasMoreElements()) {
+			System.out.println(e.nextElement());
+		}
+		
+		
+		
+		System.out.println();
+		System.out.println(v1.firstElement()); // 첫번째 값 = "준철"
+		int a = v1.indexOf("동진")+v1.indexOf("준철"); // 준철 index = 0, 동진 index = 3
+		System.out.println(a); // 0+3 = 3
+		
+		System.out.println();
+		v1.insertElementAt("상구", 5); // index 5번에 "상구" 추가
+		System.out.println(v1); // 추가된 결과
+		
+		v1.set(0, "고구마"); // index 0의 값을 "고구마" 변경
+		System.out.println(v1); // 변경됨 확인
+		
 	}
+	
+	public void listMethod1_1() {
+		Vector<String> v1 = new Vector<String>();
+		v1.addElement("준철");
+		v1.addElement("우석");
+		v1.addElement("지훈");
+		v1.addElement("동진");
+		v1.addElement("민균");
+		
+		ListIterator<String> i = v1.listIterator();
+		System.out.println(i.nextIndex()); // 0 -> 아직 next 안 해서 0
+		i.next();
+		System.out.println(i.nextIndex()); // 1
+		
+		System.out.println();
+		while(i.hasNext()) // 순서대로 갔다가
+			System.out.println(i.next());
+		while(i.hasPrevious()) // 역주행
+			System.out.println(i.previous());
+		
+			
+		System.out.println(); // nextIndext는 cursor값, previousIndex는 cursor - 1
+		System.out.println(i.nextIndex());
+		System.out.println(i.next());
+		System.out.println(i.nextIndex());
+		System.out.println(i.next());
+		System.out.println(i.next());
+		System.out.println(i.previousIndex());
+		System.out.println(i.nextIndex());
+		System.out.println(i.previous());
+		System.out.println(i.previousIndex());
+		//System.out.println(i.previous()); // NoSuchElementException
+		System.out.println(i.hasPrevious()); // 이전이 있으면 true, 없으면 false
+		
+	}
+	
 	
 	public static void main(String[] args) {
 		UtilEx4 u = new UtilEx4();
-		u.stackMethod();
+		//u.listMethod1();
+		u.listMethod1_1();
 	}
 }
