@@ -17,6 +17,7 @@ public class WindowEx3 extends JFrame { // JFrame : 웹에선 쓰이지 않음, Java에서
 	
 	public void initFrame() {
 		d = Toolkit.getDefaultToolkit().getScreenSize(); // 현재 screen의 해상도를 받아옴.
+		//System.out.println(d);
 		
 		for (int i = 0; i < jp.length; i++) {
 			jp[i] = new JPanel(i!=jp.length-1?new BorderLayout(): new GridLayout(2,2)); // 처음 4개 Border, 마지막 1개 Grid

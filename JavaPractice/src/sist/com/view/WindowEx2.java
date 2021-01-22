@@ -50,8 +50,8 @@ public class WindowEx2 extends JFrame implements ActionListener { // JFrame : 웹
 		this.add(jbtn[4],BorderLayout.SOUTH);
 	}
 		
-	public void FlowLayout() { // 수평으로 나옴, 움직이면 없어진다?
-		this.setLayout(new FlowLayout());
+	public void FlowLayout() { // 수평으로 나옴, 움직이면 흐른다
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		for (int i = 0; i < jbtn.length; i++) {
 			this.add(jbtn[i]);
 		}

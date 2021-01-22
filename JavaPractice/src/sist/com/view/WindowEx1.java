@@ -82,7 +82,7 @@ public class WindowEx1 extends JFrame{ // JFrame : 웹에선 쓰이지 않음, Java에서 
 		JTree jTree = new JTree(gen);
 		jTree.setRootVisible(true);
 		JScrollPane js = new JScrollPane(jTree);
-		this.add(js);
+		this.add(js); // Frame에
 		
 		
 	}

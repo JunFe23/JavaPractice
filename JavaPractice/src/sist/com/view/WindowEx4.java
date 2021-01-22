@@ -76,9 +76,10 @@ public class WindowEx4 extends JFrame {
       @Override
       public void paint(Graphics g) {
          // TODO Auto-generated method stub
-         if(k==0)
+         g.setColor(Color.black);
+    	 if(k==0)
          gamePan(g);
-         k++;
+         //k++;
          //g.drawString("Message x="+x+" y="+y, x, y);
          g.setColor(turn==-1?Color.black:Color.white);
          g.fillOval(x-25, y-25, 50, 50);
