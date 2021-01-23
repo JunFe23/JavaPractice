@@ -74,11 +74,11 @@ public class UtilEx7 {
       if(index==-1)return;
       System.out.println(Dao.getDao().getVector().remove(index).getName().concat("¥‘ªË¡¶"));
    }
+  
    public void modifyMember() {
 	   int index=searchData();
 	   if(index==-1)return;
 	   memberModify();
-	   
    }
   /* public void viewTable() {
 	   new WindowEx7(Dao.getDao().getVector());

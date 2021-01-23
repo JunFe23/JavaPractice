@@ -29,7 +29,7 @@ public class UtilEx4 {
 	
 	public static void main(String[] args) {
 		UtilEx4 u = new UtilEx4();
-		//u.utilAction1();
-		u.utilAction2();
+		u.utilAction1();
+		//u.utilAction2();
 	}
 }
