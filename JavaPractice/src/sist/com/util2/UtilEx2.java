@@ -17,12 +17,13 @@ public class UtilEx2 {
 		list2.add("¼öÁ¤Â¯");
 		//System.out.println(list2.size()); //3
 		Iterator<String> i = list1.iterator(); // ¹İº¹ÀÚ  // cursor || lastRet || expectedModCount
-		//list1.remove(0); // ConcurrentModificationException
+		//list1.remove(0); // ConcurrentModificationException // modcount¶û expectedmodcount¶û ¾È¸Â°Ô µÅ¼­ ¹ß»ı.
 		//i.remove(); // IllegalStateExcepion -> iterator »ç¿ëµµ ¾ÈÇÏ°í »èÁ¦ÇÏÁö¸¶¶ó
 		i.next(); // À±ÇÏÂ¯
 		i.next(); // À±ÇÏÂ¯2
 		i.remove(); // À±ÇÏÂ¯ »èÁ¦
-		System.out.println(i.next()); // À±ÇÏÂ¯3
+		System.out.println(i.next()); // À±ÇÏÂ¯3sl
+		
 		//System.out.println(i.hasNext()); // true
 		//System.out.println(i.next());
 		i=list1.iterator();

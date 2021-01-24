@@ -73,16 +73,18 @@ public class UtilEx4 {
 		
 			
 		System.out.println(); // nextIndext는 cursor값, previousIndex는 cursor - 1
+		System.out.println(i.nextIndex()); // next: 0, previous : -1
+		System.out.println(i.next()); // next: 1, previous : 0
 		System.out.println(i.nextIndex());
-		System.out.println(i.next());
-		System.out.println(i.nextIndex());
-		System.out.println(i.next());
-		System.out.println(i.next());
+		System.out.println(i.next()); // next: 2, previous : 1
+		System.out.println(i.next()); // next: 3, previous : 2
 		System.out.println(i.previousIndex());
 		System.out.println(i.nextIndex());
-		System.out.println(i.previous());
+		System.out.println(i.previous()); // next: 2, previous : 1
 		System.out.println(i.previousIndex());
-		//System.out.println(i.previous()); // NoSuchElementException
+		System.out.println(i.previous()); // next: 1, previous : 0
+		System.out.println(i.previous()); // next: 0, previous : -1  맨 처음 상태
+		System.out.println(i.previous()); // NoSuchElementException 
 		System.out.println(i.hasPrevious()); // 이전이 있으면 true, 없으면 false
 		
 	}

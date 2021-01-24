@@ -17,10 +17,10 @@ public class UtilEx3 {
 		
 		ListIterator<Double> it = list.listIterator();
 		
-		System.out.println(it.next());
-		System.out.println(it.next());
-		System.out.println(it.previous());
-		System.out.println(it.previous());
+		System.out.println(it.next()); // 87.5
+		System.out.println(it.next()); // 57.5
+		System.out.println(it.previous()); // 57.5
+		System.out.println(it.previous()); // 87.5
 		
 	}
 	
@@ -43,6 +43,7 @@ public class UtilEx3 {
 		while(i.hasNext()) {
 			System.out.println(i.next());
 		}
+		System.out.println(set.toString());
 		
 		Stack<String> stack = new Stack<String>(); // 선입후출
 		stack.push("A");
@@ -52,6 +53,7 @@ public class UtilEx3 {
 		System.out.println(stack.toString());
 		StringBuffer sb = new StringBuffer();
 		String str = sb.append(5>3).append("hi").append("]").toString(); // toString으로 ??
+		System.out.println(sb);
 		
 				
 	}
