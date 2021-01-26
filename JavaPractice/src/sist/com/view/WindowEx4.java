@@ -11,7 +11,7 @@ import java.awt.event.MouseMotionAdapter;
 
 import javax.swing.JFrame;
 
-public class WindowEx4 extends JFrame {
+public class WindowEx4 extends JFrame { // ¿À¸ñ
         Pan pan=new Pan();
         int x=-100,y=-100;
         Point []m_point=new Point[100];
