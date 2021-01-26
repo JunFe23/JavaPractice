@@ -2,7 +2,7 @@ package sist.com.algorithm1;
 
 import java.util.Scanner;
 
-public class ÀÔÃâ·Â°ú»çÄ¢¿¬»ê11 {
+public class ì…ì¶œë ¥ê³¼ì‚¬ì¹™ì—°ì‚°11 {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		int a=sc.nextInt();

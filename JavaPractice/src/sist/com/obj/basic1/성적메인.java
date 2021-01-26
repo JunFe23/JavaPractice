@@ -1,232 +1,232 @@
 package sist.com.obj.basic1;
-//¼ºÀûÃ³¸®
-//¹øÈ£ ÀÌ¸§ ±¹¾î ¿µ¾î ¼öÇĞ ÃÑÁ¡ Æò±Õ µî¼ö ÇĞÁ¡
+//ì„±ì ì²˜ë¦¬
+//ë²ˆí˜¸ ì´ë¦„ êµ­ì–´ ì˜ì–´ ìˆ˜í•™ ì´ì  í‰ê·  ë“±ìˆ˜ í•™ì 
 
 import java.util.Scanner;
 
-public class ¼ºÀû¸ŞÀÎ {
-	Scanner sc=new Scanner(System.in);
-	static Á¤º¸[] informations=new Á¤º¸[5];
-	int cnt;
-	
-	
-	public boolean isFull() {
-		return cnt==informations.length-1;
-	}
-	
-	public boolean isEmpty() {
-		return cnt==0;
-	}
-	
-		
-	public void addInfo() {
-		/*private int num=1;
-		private String name;
-		private int kor;
-		private int eng;
-		private int math;
-		private int total;
-		private int avg;
-		private int no;
-		private String grade;*/
-		
-		
-		Á¤º¸ info=new Á¤º¸();
-		int num;
-		do {
-			System.out.println("Num : ");
-			num=sc.nextInt();
-		}while(uniqueNumber(num));
-		info.setNum(num);
-		System.out.println("name : ");
-		info.setName(sc.next());
-		System.out.println("korScore : ");
-		info.setKor(sc.nextInt());
-		System.out.println("engScore : ");
-		info.setEng(sc.nextInt());
-		System.out.println("mathScore : ");
-		info.setMath(sc.nextInt());
-		int total=info.getKor()+info.getEng()+info.getMath();
-		info.setTotal(total);
-		double avg=total/3;
-		info.setAvg(avg);
-		
-		/*switch((int)avg/10) {
-			case 10: case 9:
-				grade="A";
-				info.setGrade(grade);
-				break;
-			case 8:
-				grade="B";
-				info.setGrade(grade);
-				break;
-			case 7:
-				grade="C";
-				info.setGrade(grade);
-				break;
-			case 6:
-				grade="D";
-				info.setGrade(grade);
-				break;
-			default:
-				grade="F";
-				info.setGrade(grade);
-				break;
-		}*/
-		if(isFull()) increment();
-		informations[cnt++]=info;
-		rankCal();
-	}
-	
-	 public boolean uniqueNumber(int no) {
-	      for (int i = 0; i < cnt; i++) {
-	           if(informations[i].getNum()==no)return true;  
-	      
-	       }
-	      return false;
-	   }
-	
-	public void increment() {	
-		Á¤º¸[] imsi=new Á¤º¸[informations.length*2];
-		System.arraycopy(informations, 0, imsi, 0, informations.length);
-		informations=imsi;
-	}
-	
-	public void list() {
-		for (int i = 0; i < cnt; i++) {
-			System.out.println(informations[i]);
-		}
-	}
-	
-	public int search(int number) {
-		for (int i = 0; i < cnt; i++) {
-			if(informations[i].getNum()==number) return i;
-		}
-		return -1;
-	}
-	
-	public Á¤º¸ getInformation(int number) {
-		return informations[number];
-	}
-	
-	public void infoInformation() {
-		System.out.println("¹øÈ£");
-		int index=search(sc.nextInt());
-		System.out.println(index==-1?"No Such a Data":getInformation(index));
-	}
-	
-	public void rankCal() {
-		int []rArray=new int[cnt];
-		for (int i = 0; i < cnt; i++) {
-			rArray[i]=1;	
-			for (int j = 0; j < rArray.length; j++) {
-				if(informations[i].getTotal()<informations[j].getTotal()) {
-					rArray[i]++;
-					
-				}
-			} 
-			informations[i].setRank(rArray[i]);
-		}
-	}
-	
-	public void swap(Á¤º¸[] informations, int index, int target) {
-		Á¤º¸ tmp = informations[index];
-		informations[index] = informations[target];
-		informations[target] = tmp;
-	}
-	
-	public void rankList() {
-		System.out.println("¼ºÀû¼øÁ¤·Ä 1.¿À¸¥Â÷¼ø 2.³»¸²Â÷¼ø");
-		int ascending = sc.nextInt();
-		
-		for (int i = 0; i < cnt; i++) {
-			for (int j = 0; j < cnt; j++) {
-				if(ascending==1) {
-					if(informations[i].getRank()>informations[j].getRank())
-						swap(informations,i,j);
-				}else{
-					if(informations[i].getRank()<informations[j].getRank())
-						swap(informations, i, j);
-						
-				}
-			}
-		}
-	}
-	
-	
-	
-	public void modify() {
-		System.out.println("¼öÁ¤ÇÒ ¼ºÀû¹øÈ£ : ");
-		int index=search(sc.nextInt());
-		if(index==-1) {
-			System.out.println("No Such a Data");
-			return;
-		}
-		Á¤º¸ Á¤º¸=getInformation(index);
-		System.out.println("ModifyName : ");
-		Á¤º¸.setName(sc.next());
-		System.out.println("ModifyKor : ");
-		Á¤º¸.setKor(sc.nextInt());
-		System.out.println("ModifyEng : ");
-		Á¤º¸.setEng(sc.nextInt());
-		System.out.println("ModifyMath : ");
-		Á¤º¸.setMath(sc.nextInt());
-		int total=Á¤º¸.getMath()+Á¤º¸.getEng()+Á¤º¸.getMath();
-		Á¤º¸.setTotal(total);
-		double avg=total/3;
-		Á¤º¸.setAvg(avg);
-		rankCal();
-		System.out.println("Modification Complete");
-	}
-	
-	public void delete() {
-		System.out.println("»èÁ¦ÇÒ ¼ºÀûÀÇ ¹øÈ£ : ");
-		int index=search(sc.nextInt());
-		if(index==-1) {
-			System.out.println("No Such a Data");
-			return;
-		}
-		for (int i = index; i < cnt; i++) {
-			if(i==cnt-1) {
-				informations[i]=null;
-				break;
-			}
-			informations[i]=informations[i+1];
-		}
-		cnt--;
-	}
-	
-	public void menu() {
-		while(true) {
-		System.out.println("1.¼ºÀûµî·Ï 2.ÀüÃ¼Á¶È¸ 3.¹øÈ£·Î Á¶È¸ 4.¼øÀ§Á¶È¸ 5.¼öÁ¤ 6.»èÁ¦");
-			switch (sc.nextInt()) {
-			case 1:
-				addInfo();
-				break;
-			case 2:
-				list();
-				break;
-			case 3:
-				infoInformation();
-				break;
-			case 4:
-				rankList();
-				list();
-				break;
-			case 5:
-				modify();
-				break;
-			case 6:
-				delete();
-				break;		
-			}
-		}
-	}
-	
-	public static void main(String[] args) {
-		¼ºÀû¸ŞÀÎ m=new ¼ºÀû¸ŞÀÎ();
-		
-		m.menu();
-		
-	}
+public class ì„±ì ë©”ì¸ {
+   Scanner sc=new Scanner(System.in);
+   static ì •ë³´[] informations=new ì •ë³´[5];
+   int cnt;
+   
+   
+   public boolean isFull() {
+      return cnt==informations.length-1;
+   }
+   
+   public boolean isEmpty() {
+      return cnt==0;
+   }
+   
+      
+   public void addInfo() {
+      /*private int num=1;
+      private String name;
+      private int kor;
+      private int eng;
+      private int math;
+      private int total;
+      private int avg;
+      private int no;
+      private String grade;*/
+      
+      
+      ì •ë³´ info=new ì •ë³´();
+      int num;
+      do {
+         System.out.println("Num : ");
+         num=sc.nextInt();
+      }while(uniqueNumber(num));
+      info.setNum(num);
+      System.out.println("name : ");
+      info.setName(sc.next());
+      System.out.println("korScore : ");
+      info.setKor(sc.nextInt());
+      System.out.println("engScore : ");
+      info.setEng(sc.nextInt());
+      System.out.println("mathScore : ");
+      info.setMath(sc.nextInt());
+      int total=info.getKor()+info.getEng()+info.getMath();
+      info.setTotal(total);
+      double avg=total/3;
+      info.setAvg(avg);
+      
+      /*switch((int)avg/10) {
+         case 10: case 9:
+            grade="A";
+            info.setGrade(grade);
+            break;
+         case 8:
+            grade="B";
+            info.setGrade(grade);
+            break;
+         case 7:
+            grade="C";
+            info.setGrade(grade);
+            break;
+         case 6:
+            grade="D";
+            info.setGrade(grade);
+            break;
+         default:
+            grade="F";
+            info.setGrade(grade);
+            break;
+      }*/
+      if(isFull()) increment();
+      informations[cnt++]=info;
+      rankCal();
+   }
+   
+    public boolean uniqueNumber(int no) {
+         for (int i = 0; i < cnt; i++) {
+              if(informations[i].getNum()==no)return true;  
+         
+          }
+         return false;
+      }
+   
+   public void increment() {   
+      ì •ë³´[] imsi=new ì •ë³´[informations.length*2];
+      System.arraycopy(informations, 0, imsi, 0, informations.length);
+      informations=imsi;
+   }
+   
+   public void list() {
+      for (int i = 0; i < cnt; i++) {
+         System.out.println(informations[i]);
+      }
+   }
+   
+   public int search(int number) {
+      for (int i = 0; i < cnt; i++) {
+         if(informations[i].getNum()==number) return i;
+      }
+      return -1;
+   }
+   
+   public ì •ë³´ getInformation(int number) {
+      return informations[number];
+   }
+   
+   public void infoInformation() {
+      System.out.println("ë²ˆí˜¸");
+      int index=search(sc.nextInt());
+      System.out.println(index==-1?"No Such a Data":getInformation(index));
+   }
+   
+   public void rankCal() {
+      int []rArray=new int[cnt];
+      for (int i = 0; i < cnt; i++) {
+         rArray[i]=1;   
+         for (int j = 0; j < rArray.length; j++) {
+            if(informations[i].getTotal()<informations[j].getTotal()) {
+               rArray[i]++;
+               
+            }
+         } 
+         informations[i].setRank(rArray[i]);
+      }
+   }
+   
+   public void swap(ì •ë³´[] informations, int index, int target) {
+      ì •ë³´ tmp = informations[index];
+      informations[index] = informations[target];
+      informations[target] = tmp;
+   }
+   
+   public void rankList() {
+      System.out.println("ì„±ì ìˆœì •ë ¬ 1.ì˜¤ë¥¸ì°¨ìˆœ 2.ë‚´ë¦¼ì°¨ìˆœ");
+      int ascending = sc.nextInt();
+      
+      for (int i = 0; i < cnt; i++) {
+         for (int j = 0; j < cnt; j++) {
+            if(ascending==1) {
+               if(informations[i].getRank()>informations[j].getRank())
+                  swap(informations,i,j);
+            }else{
+               if(informations[i].getRank()<informations[j].getRank())
+                  swap(informations, i, j);
+                  
+            }
+         }
+      }
+   }
+   
+   
+   
+   public void modify() {
+      System.out.println("ìˆ˜ì •í•  ì„±ì ë²ˆí˜¸ : ");
+      int index=search(sc.nextInt());
+      if(index==-1) {
+         System.out.println("No Such a Data");
+         return;
+      }
+      ì •ë³´ ì •ë³´=getInformation(index);
+      System.out.println("ModifyName : ");
+      ì •ë³´.setName(sc.next());
+      System.out.println("ModifyKor : ");
+      ì •ë³´.setKor(sc.nextInt());
+      System.out.println("ModifyEng : ");
+      ì •ë³´.setEng(sc.nextInt());
+      System.out.println("ModifyMath : ");
+      ì •ë³´.setMath(sc.nextInt());
+      int total=ì •ë³´.getMath()+ì •ë³´.getEng()+ì •ë³´.getMath();
+      ì •ë³´.setTotal(total);
+      double avg=total/3;
+      ì •ë³´.setAvg(avg);
+      rankCal();
+      System.out.println("Modification Complete");
+   }
+   
+   public void delete() {
+      System.out.println("ì‚­ì œí•  ì„±ì ì˜ ë²ˆí˜¸ : ");
+      int index=search(sc.nextInt());
+      if(index==-1) {
+         System.out.println("No Such a Data");
+         return;
+      }
+      for (int i = index; i < cnt; i++) {
+         if(i==cnt-1) {
+            informations[i]=null;
+            break;
+         }
+         informations[i]=informations[i+1];
+      }
+      cnt--;
+   }
+   
+   public void menu() {
+      while(true) {
+      System.out.println("1.ì„±ì ë“±ë¡ 2.ì „ì²´ì¡°íšŒ 3.ë²ˆí˜¸ë¡œ ì¡°íšŒ 4.ìˆœìœ„ì¡°íšŒ 5.ìˆ˜ì • 6.ì‚­ì œ");
+         switch (sc.nextInt()) {
+         case 1:
+            addInfo();
+            break;
+         case 2:
+            list();
+            break;
+         case 3:
+            infoInformation();
+            break;
+         case 4:
+            rankList();
+            list();
+            break;
+         case 5:
+            modify();
+            break;
+         case 6:
+            delete();
+            break;      
+         }
+      }
+   }
+   
+   public static void main(String[] args) {
+      ì„±ì ë©”ì¸ m=new ì„±ì ë©”ì¸();
+      
+      m.menu();
+      
+   }
 }
