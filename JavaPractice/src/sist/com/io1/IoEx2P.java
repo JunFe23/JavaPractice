@@ -1,7 +1,7 @@
 package sist.com.io1;
 
 import java.io.FileOutputStream;
-
+//aaa
 public class IoEx2P {
 	
 	public void conToFa1() {

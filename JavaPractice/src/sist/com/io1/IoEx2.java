@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-
+//aaa
 // conToCon, conToFa
 public class IoEx2 {
 	
