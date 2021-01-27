@@ -9,18 +9,18 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class WindowEx3 extends JFrame { // JFrame : À¥¿¡¼± ¾²ÀÌÁö ¾ÊÀ½, Java¿¡¼­ ¾²ÀÌ´Â °Í
+public class WindowEx3 extends JFrame { // JFrame : ì›¹ì—ì„  ì“°ì´ì§€ ì•ŠìŒ, Javaì—ì„œ ì“°ì´ëŠ” ê²ƒ
 	Dimension d;
-	JPanel []jp = new JPanel[5]; // pannel 5°³ ¼±¾ğ, ÀüÃ¼ 1°³, µé¾î°¥ 4°³
+	JPanel []jp = new JPanel[5]; // pannel 5ê°œ ì„ ì–¸, ì „ì²´ 1ê°œ, ë“¤ì–´ê°ˆ 4ê°œ
 	JButton []jbtn = new JButton[15];
 
 	
 	public void initFrame() {
-		d = Toolkit.getDefaultToolkit().getScreenSize(); // ÇöÀç screenÀÇ ÇØ»óµµ¸¦ ¹Ş¾Æ¿È.
+		d = Toolkit.getDefaultToolkit().getScreenSize(); // í˜„ì¬ screenì˜ í•´ìƒë„ë¥¼ ë°›ì•„ì˜´.
 		//System.out.println(d);
 		
 		for (int i = 0; i < jp.length; i++) {
-			jp[i] = new JPanel(i!=jp.length-1?new BorderLayout(): new GridLayout(2,2)); // Ã³À½ 4°³ Border, ¸¶Áö¸· 1°³ Grid
+			jp[i] = new JPanel(i!=jp.length-1?new BorderLayout(): new GridLayout(2,2)); // ì²˜ìŒ 4ê°œ Border, ë§ˆì§€ë§‰ 1ê°œ Grid
 			
 		}
 		
@@ -53,9 +53,9 @@ public class WindowEx3 extends JFrame { // JFrame : À¥¿¡¼± ¾²ÀÌÁö ¾ÊÀ½, Java¿¡¼­
 	
 	public WindowEx3() {
 		initFrame();
-		this.setBounds(0, 0, d.width, d.height); // ÇöÀçÈ­¸é ÇØ»óµµ·Î ¸ÂÃã.		
+		this.setBounds(0, 0, d.width, d.height); // í˜„ì¬í™”ë©´ í•´ìƒë„ë¡œ ë§ì¶¤.		
 		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // x¹öÆ° ´©¸£¸é ¸Ş¸ğ¸®¿¡¼­ ÇÁ·¹ÀÓÀ» ³¯·Á¶ó(²¨¶ó), ÀÌ°Å ¾ÈÇØµµ ²¨Áö´Â °ÍÃ³·³ º¸ÀÌÁö¸¸ »ç½Ç hiddenµÇ´Â°Í
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // xë²„íŠ¼ ëˆ„ë¥´ë©´ ë©”ëª¨ë¦¬ì—ì„œ í”„ë ˆì„ì„ ë‚ ë ¤ë¼(êº¼ë¼), ì´ê±° ì•ˆí•´ë„ êº¼ì§€ëŠ” ê²ƒì²˜ëŸ¼ ë³´ì´ì§€ë§Œ ì‚¬ì‹¤ hiddenë˜ëŠ”ê²ƒ
 	}
 
 	public static void main(String[] args) {

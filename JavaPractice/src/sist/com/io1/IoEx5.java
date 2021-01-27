@@ -14,109 +14,109 @@ import java.util.Scanner;
 
 // ByteStream, CharacterSTream, ObjectStream
 public class IoEx5 {
-	
-	public void conToFa() {
-		byte []fileName = new byte[50];
-		byte []contents = new byte[200];
-		BufferedOutputStream bos = null; // fos∏¶ ∆˜«‘«œ±‚ ∂ßπÆø° µ˚∑Œ º±æ«“ « ø‰ æ¯¥Ÿ.
-		BufferedReader br = null;
-		try {
-			br = new BufferedReader(new InputStreamReader(System.in));
-			System.out.println("FileName : ");
-			System.in.read(fileName); // fileNameø° ≥÷æÓ¡‹.
-			//bos = new BufferedOutputStream(new FileOutputStream(new File(new String(fileName).trim())),5); // size∞° 5πŸ¿Ã∆Æ, 5πŸ¿Ã∆Æ∞° ¥Ÿ ¬˜æﬂ ≥ª∫∏≥ª¡¸!!!!!!!buffer! ±‚∫ª¿Ã 8,192πŸ¿Ã∆Æ
-			bos = new BufferedOutputStream(new FileOutputStream(new File(new String(fileName).trim()),true)); // fileOutputStream ø°º≠ true∑Œ append «„øÎ
-			System.out.println("Contents : ");
-			bos.write(br.readLine().getBytes()); // «—¡Ÿ ¿–¿∏∏È String¿Œµ• ±◊ String¿ª πŸ¿Ã∆Æ πËø≠∑Œ πŸ≤ﬁ.
-			//bos.flush(); // buffer¿« ±‚∫ª size∏¶ ¥Ÿ ∏¯√§øˆµµ √‚∑¬«œ∞‘ «ÿ¡‹ -> flush
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
-			try {
-				if(br!=null)br.close(); // close∏¶ «ﬂ¿ª ∂ß¥¬ flush∏¶ ª˝∑´«“ ºˆ ¿÷¥Ÿ.
-				if(bos!=null)bos.close();				
-			} catch (Exception e2) {
-				// TODO: handle exception
-			}
-		}
-	}
-	
-	public void faToCon() {
-		BufferedReader brconsole = null, brFile =null;
-		try {
-			brconsole = new BufferedReader(new InputStreamReader(System.in)); // console
-			System.out.println("FileName : ");
-			brFile = new BufferedReader(new InputStreamReader(new FileInputStream(brconsole.readLine().trim())));
-			String temp = null;
-			while((temp=brFile.readLine())!=null) {
-				Thread.sleep(100);
-				System.out.println(temp);
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
-			try {
-				if(brconsole!=null)brconsole.close();
-				if(brFile!=null)brFile.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-			}
-		}
-	}
-	
-	public void faToConMine() {
-		byte []fileName = new byte[50];
-		BufferedInputStream bis = null;
-		try {
-			System.out.println("FileName : ");
-			System.in.read(fileName);
-			bis = new BufferedInputStream(new FileInputStream(new File(new String(fileName).trim())));
-			int temp = 0;
-			while((temp=bis.read())!=-1){
-				Thread.sleep(100);
-				System.out.print((char)temp);
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	}
-	
-	public void fileCopy() {
-		Scanner scan = new Scanner(System.in);
-		BufferedReader br = null;
-		BufferedWriter bw = null;
-		String temp = null;
-		try {
-			System.out.println("OriginFile : ");
-			br = new BufferedReader(new FileReader(new File(scan.next().trim())));
-			System.out.println("ChangeFile : ");
-			bw = new BufferedWriter(new FileWriter(new File(scan.next().trim())));
-			while((temp=br.readLine())!=null) {
-				bw.write(temp);
-				bw.newLine();
-				bw.flush(); // close æ» «ÿ¡÷∏È «ÿ¡‡æﬂ«—¥Ÿ.
-			}			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally {
-			try {
-				if(br!=null)br.close();
-				if(bw!=null)bw.close();				
-			} catch (Exception e2) {
-				// TODO: handle exception
-			}
-		}
-	}
-	//aaa
-	public static void main(String[] args) {
-		IoEx5 i = new IoEx5();
-		//i.conToFa();
-		//i.faToCon();
-		//i.faToConMine();
-		i.fileCopy();
-	}
+   
+   public void conToFa() {
+      byte []fileName = new byte[50];
+      byte []contents = new byte[200];
+      BufferedOutputStream bos = null; // fosÎ•º Ìè¨Ìï®ÌïòÍ∏∞ ÎïåÎ¨∏Ïóê Îî∞Î°ú ÏÑ†Ïñ∏Ìï† ÌïÑÏöî ÏóÜÎã§.
+      BufferedReader br = null;
+      try {
+         br = new BufferedReader(new InputStreamReader(System.in));
+         System.out.println("FileName : ");
+         System.in.read(fileName); // fileNameÏóê ÎÑ£Ïñ¥Ï§å.
+         //bos = new BufferedOutputStream(new FileOutputStream(new File(new String(fileName).trim())),5); // sizeÍ∞Ä 5Î∞îÏù¥Ìä∏, 5Î∞îÏù¥Ìä∏Í∞Ä Îã§ Ï∞®Ïïº ÎÇ¥Î≥¥ÎÇ¥Ïßê!!!!!!!buffer! Í∏∞Î≥∏Ïù¥ 8,192Î∞îÏù¥Ìä∏
+         bos = new BufferedOutputStream(new FileOutputStream(new File(new String(fileName).trim()),true)); // fileOutputStream ÏóêÏÑú trueÎ°ú append ÌóàÏö©
+         System.out.println("Contents : ");
+         bos.write(br.readLine().getBytes()); // ÌïúÏ§Ñ ÏùΩÏúºÎ©¥ StringÏù∏Îç∞ Í∑∏ StringÏùÑ Î∞îÏù¥Ìä∏ Î∞∞Ïó¥Î°ú Î∞îÍøà.
+         //bos.flush(); // bufferÏùò Í∏∞Î≥∏ sizeÎ•º Îã§ Î™ªÏ±ÑÏõåÎèÑ Ï∂úÎ†•ÌïòÍ≤å Ìï¥Ï§å -> flush
+      } catch (Exception e) {
+         // TODO: handle exception
+         e.printStackTrace();
+      } finally {
+         try {
+            if(br!=null)br.close(); // closeÎ•º ÌñàÏùÑ ÎïåÎäî flushÎ•º ÏÉùÎûµÌï† Ïàò ÏûàÎã§.
+            if(bos!=null)bos.close();            
+         } catch (Exception e2) {
+            // TODO: handle exception
+         }
+      }
+   }
+   
+   public void faToCon() {
+      BufferedReader brconsole = null, brFile =null;
+      try {
+         brconsole = new BufferedReader(new InputStreamReader(System.in)); // console
+         System.out.println("FileName : ");
+         brFile = new BufferedReader(new InputStreamReader(new FileInputStream(brconsole.readLine().trim())));
+         String temp = null;
+         while((temp=brFile.readLine())!=null) {
+            Thread.sleep(100);
+            System.out.println(temp);
+         }
+      } catch (Exception e) {
+         // TODO: handle exception
+         e.printStackTrace();
+      } finally {
+         try {
+            if(brconsole!=null)brconsole.close();
+            if(brFile!=null)brFile.close();
+         } catch (Exception e2) {
+            // TODO: handle exception
+         }
+      }
+   }
+   
+   public void faToConMine() {
+      byte []fileName = new byte[50];
+      BufferedInputStream bis = null;
+      try {
+         System.out.println("FileName : ");
+         System.in.read(fileName);
+         bis = new BufferedInputStream(new FileInputStream(new File(new String(fileName).trim())));
+         int temp = 0;
+         while((temp=bis.read())!=-1){
+            Thread.sleep(100);
+            System.out.print((char)temp);
+         }
+      } catch (Exception e) {
+         // TODO: handle exception
+         e.printStackTrace();
+      }
+   }
+   
+   public void fileCopy() {
+      Scanner scan = new Scanner(System.in);
+      BufferedReader br = null;
+      BufferedWriter bw = null;
+      String temp = null;
+      try {
+         System.out.println("OriginFile : ");
+         br = new BufferedReader(new FileReader(new File(scan.next().trim())));
+         System.out.println("ChangeFile : ");
+         bw = new BufferedWriter(new FileWriter(new File(scan.next().trim())));
+         while((temp=br.readLine())!=null) {
+            bw.write(temp);
+            bw.newLine();
+            bw.flush(); // close Ïïà Ìï¥Ï£ºÎ©¥ Ìï¥Ï§òÏïºÌïúÎã§.
+         }         
+      } catch (Exception e) {
+         // TODO: handle exception
+         e.printStackTrace();
+      } finally {
+         try {
+            if(br!=null)br.close();
+            if(bw!=null)bw.close();            
+         } catch (Exception e2) {
+            // TODO: handle exception
+         }
+      }
+   }
+   //aaa
+   public static void main(String[] args) {
+      IoEx5 i = new IoEx5();
+      //i.conToFa();
+      //i.faToCon();
+      //i.faToConMine();
+      i.fileCopy();
+   }
 }

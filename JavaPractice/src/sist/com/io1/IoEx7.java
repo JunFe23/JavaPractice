@@ -1,13 +1,17 @@
 package sist.com.io1;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -20,21 +24,52 @@ public class IoEx7 extends JFrame implements ActionListener{
    JMenuBar jmb;
    JMenu file,edit,source;
    JMenuItem newItem,openItem,closeItem,saveItem,exitItem;
+   JMenuItem fontItem, colorItem;
    String []path={"e:\\img\\new.gif","e:\\img\\save.gif","e:\\img\\close.gif"};
    ImageIcon []icon=new ImageIcon[path.length];
    JTextArea jta;
    JScrollPane jsp;
    JFileChooser fileCh=new JFileChooser();
-   @Override
+   
+   
+   public JTextArea getJta() {
+	   return jta;
+   }
+   public void setJta(JTextArea jta) {
+	   this.jta = jta;
+   }
+   
+   
+@Override
    public void actionPerformed(ActionEvent e) {
       // TODO Auto-generated method stub
       Object obj=e.getSource();
+      String command = e.getActionCommand(); // menuitemÏùò stringÍ∞í Î∞ò
       if(obj==newItem) {
          new IoEx7();
       }
       if(obj==exitItem) {
          //System.exit(0);
          this.dispose();
+      }
+      if(obj==saveItem) {
+    	  save();
+      }
+      if(command.equals("open")){
+      //if(obj==openItem) {
+    	  System.out.println(command);
+    	  int state = fileCh.showOpenDialog(this);
+    	  if(state==JFileChooser.APPROVE_OPTION) {
+    		  open();
+    	  }
+      }
+      
+      if(obj==colorItem) {
+    	 Color color = JColorChooser.showDialog(this, "", Color.white);
+    	 jta.setBackground(color); // Î∞∞Í≤Ω ÏÉâ Î≥ÄÌôò.
+      }
+      if(obj==fontItem) {
+    	  new FontDig(this);
       }
       
       
@@ -66,7 +101,16 @@ public class IoEx7 extends JFrame implements ActionListener{
       
       
       edit=new JMenu("Edit");
+      
+      
       source=new JMenu("Source");
+      fontItem = new JMenuItem("Font");
+      colorItem = new JMenuItem("Color");
+      source.add(fontItem);
+      fontItem.addActionListener(this);
+      source.addSeparator();
+      source.add(colorItem);
+      colorItem.addActionListener(this);
       jmb.add(file);
       jmb.add(edit);
       jmb.add(source);
@@ -74,8 +118,32 @@ public class IoEx7 extends JFrame implements ActionListener{
       
       
    }
+   
+   public void open() {
+	   BufferedReader br = null;
+	   try {
+		   br = new BufferedReader(new FileReader(fileCh.getSelectedFile()));
+		   String temp = "";
+		   while((temp=br.readLine())!=null) {
+			   jta.append(temp);
+			   jta.append("\r\n");
+		   }
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	} finally {
+		try {
+			if(br!=null)br.close();
+		} catch (Exception e2) {
+			// TODO: handle exception
+			e2.printStackTrace();
+		}
+	}
+   }
+   
    public void save() {
        BufferedWriter bw=null;
+       fileCh.showSaveDialog(this);
        try {
           bw=new BufferedWriter(new FileWriter(fileCh.getSelectedFile()));
           bw.write(jta.getText());
@@ -87,7 +155,7 @@ public class IoEx7 extends JFrame implements ActionListener{
       dispose();
    }
    public IoEx7() {
-      super("∏ﬁ∏¿Â");
+      super("Î©îÎ™®Ïû•");
       initMenu();
       
       this.addWindowListener(new WindowAdapter() {
@@ -96,7 +164,7 @@ public class IoEx7 extends JFrame implements ActionListener{
          public void windowClosing(WindowEvent e) {
             // TODO Auto-generated method stub
             if(jta.getText().length()!=0) {               
-               switch (JOptionPane.showConfirmDialog(IoEx7.this,"¡æ∑·«“∞≈¥œ?")) {
+               switch (JOptionPane.showConfirmDialog(IoEx7.this,"Ï†ÄÏû•ÏõêÌï¥??")) {
                case JOptionPane.YES_OPTION:
                     int rs=fileCh.showSaveDialog(IoEx7.this);
                     if(rs==JFileChooser.APPROVE_OPTION) {
@@ -126,7 +194,6 @@ public class IoEx7 extends JFrame implements ActionListener{
    }
 
 }
-
 
 
 

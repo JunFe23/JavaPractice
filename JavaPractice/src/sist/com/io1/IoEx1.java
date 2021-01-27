@@ -2,72 +2,72 @@ package sist.com.io1;
 
 import java.io.IOException;
 // aaa
-// Stream [Byte, Character, Object] ¥‹πÊ«‚, Input Output
+// Stream [Byte, Character, Object] Îã®Î∞©Ìñ•, Input Output
 public class IoEx1 {
-	public void conToCon() {
-		int temp = 0;
-		try {
-			System.out.println("Data:");
-			while((temp=System.in.read())!=-1) {
-				System.out.print((char)temp);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void conToCon2() {
-		byte []temp=new byte[10]; // [][][][][][][][][]
-		try {
-			System.out.println("Data : ");
-			System.in.read(temp,0,2);
-			System.out.println(new String(temp).trim().equals("abc"));
-			
-			/*for(byte b:temp) {
-				System.out.println(b);
-			}*/
-			System.out.println(System.in.read(temp)); // «“¥Á«— ¡÷º“∏¶ ≥÷¿Ω
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-	
-	public void conToCon3() {
-		byte []temp = new byte[10];
-		System.out.println("Data : ");
-		try {
-			int cnt = System.in.read(temp, 1, 9);
-			System.out.println("cnt="+cnt);
-			for(int i=0;i<temp.length;i++) {
-				System.out.println(temp[i]);
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-		
-	public void conToCon4() {
-		String temp = null;
-		byte []by = new byte[20];
-		try {
-			do {
-			System.out.println("Data : ");
-			System.in.read(by);
-			temp = new String(by).trim(); // by∑Œ πﬁ¿∫ ∞™¿ª String«¸¿∏∑Œ ∏∏µÈæÓº≠
-			System.out.println(temp);
-			}while(!temp.equals("exit")); // exit∞˙ ¥Ÿ∏£∏È do π›∫π
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	}
-	
-	
-	public static void main(String[] args) {
-		IoEx1 i = new IoEx1();
-		//i.conToCon();
-		//i.conToCon2();
-		//i.conToCon3();
-		i.conToCon4();
-		
-	}
+   public void conToCon() {
+      int temp = 0;
+      try {
+         System.out.println("Data:");
+         while((temp=System.in.read())!=-1) {
+            System.out.print((char)temp);
+         }
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+   }
+   
+   public void conToCon2() {
+      byte []temp=new byte[10]; // [][][][][][][][][]
+      try {
+         System.out.println("Data : ");
+         System.in.read(temp,0,2);
+         System.out.println(new String(temp).trim().equals("abc"));
+         
+         /*for(byte b:temp) {
+            System.out.println(b);
+         }*/
+         System.out.println(System.in.read(temp)); // Ìï†ÎãπÌïú Ï£ºÏÜåÎ•º ÎÑ£Ïùå
+      } catch (Exception e) {
+         // TODO: handle exception
+      }
+   }
+   
+   public void conToCon3() {
+      byte []temp = new byte[10];
+      System.out.println("Data : ");
+      try {
+         int cnt = System.in.read(temp, 1, 9);
+         System.out.println("cnt="+cnt);
+         for(int i=0;i<temp.length;i++) {
+            System.out.println(temp[i]);
+         }
+      } catch (Exception e) {
+         // TODO: handle exception
+      }
+   }
+      
+   public void conToCon4() {
+      String temp = null;
+      byte []by = new byte[20];
+      try {
+         do {
+         System.out.println("Data : ");
+         System.in.read(by);
+         temp = new String(by).trim(); // byÎ°ú Î∞õÏùÄ Í∞íÏùÑ StringÌòïÏúºÎ°ú ÎßåÎì§Ïñ¥ÏÑú
+         System.out.println(temp);
+         }while(!temp.equals("exit")); // exitÍ≥º Îã§Î•¥Î©¥ do Î∞òÎ≥µ
+      } catch (Exception e) {
+         // TODO: handle exception
+      }
+   }
+   
+   
+   public static void main(String[] args) {
+      IoEx1 i = new IoEx1();
+      //i.conToCon();
+      //i.conToCon2();
+      //i.conToCon3();
+      i.conToCon4();
+      
+   }
 }

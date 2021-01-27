@@ -9,90 +9,90 @@ import java.io.InputStreamReader;
 //aaa
 // conToCon, conToFa
 public class IoEx2 {
-	
-	public void conToFa1() throws IOException {
-		byte []fileName = new byte[50];
-		byte []contents = new byte[20];
-		
-		FileOutputStream fos = null;
-		System.out.println("FileName : ");
-		System.in.read(fileName);
-		//System.out.println("abc ".equals("abc")); // false [a][b][c][13][10][/0]
-		String sfileName = new String(fileName).trim(); // d:abc.txt
-		//System.out.println(sfileName.trim().equals("d:/abc.txt"));
-		fos = new FileOutputStream(sfileName);
-		System.out.println("Contents : ");
-		System.in.read(contents);
-		fos.write(new String(contents).trim().getBytes());
-		
-	}
-	
-	// conToCon, conToFa, faToCon, fileCopy
-	public void conToFa2() { // buffer´Â ÀÓ½Ã±â¾ïÀåÄ¡
-		BufferedReader br = null; // reader·Î ³¡³ª´Â °ÍÀº character ±â¹İ, streamÀ¸·Î ³¡³ª´Â °ÍÀº byte ±â¹İ
-		FileOutputStream fos = null;
-		String imsi = null;
-		try {
-			br=new BufferedReader(new InputStreamReader(System.in)); // console¿¡¼­ °¡Á®¿À·Á¸é ÇÏÀÌºê¸®µå Å¬·¡½ºÀÎ inputstreamreader¸¦ ÅëÇØ streamÀ» ¹Ş¾Æ¾ßÇÔ
-			System.out.println("FileName : ");
-			fos = new FileOutputStream(br.readLine().trim()); // readlineÀ¸·Î ÇÑ¹ø¿¡ ÀĞ¾î¿È
-			System.out.println("Contents : ");
-			while(!(imsi=br.readLine().trim()).equals("quit")) { // while¹®À» ÅëÇØ¼­ ¿©·¯¹ø ÀÔ·Â.
-				fos.write(imsi.getBytes());
-			}
-			//fos.write(br.readLine().getBytes()); // readLineÀÌ StringÇüÀÎµ¥ write´Â byteÇüÀ» ¹ŞÀ¸¹Ç·Î getBytes¸¦ ÅëÇØ byteÇüÀ¸·Î º¯È¯
-			//System.out.println(br.readLine());
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} finally{
-			try {
-				if(br!=null)br.close(); // ¸Ş¸ğ¸®¸¦ ÀÚÀ¯°ø°£À¸·Î µ¹·ÁÁÜ(?)
-				if(fos!=null)fos.close();
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-			}
-		}
-	}
-	
-	public void faToCon() {
-		BufferedReader br = null;
-		FileOutputStream fos = null;
-		FileInputStream fis=null;
-		String imsi = null;
-		try {
-			
-			/*br=new BufferedReader(new InputStreamReader(System.in)); // console¿¡¼­ °¡Á®¿À·Á¸é ÇÏÀÌºê¸®µå Å¬·¡½ºÀÎ inputstreamreader¸¦ ÅëÇØ streamÀ» ¹Ş¾Æ¾ßÇÔ
-			System.out.println("FileName : ");
-			fos = new FileOutputStream(br.readLine().trim()); // readlineÀ¸·Î ÇÑ¹ø¿¡ ÀĞ¾î¿È
-			System.out.println("Contents : ");
-			while(!(imsi=br.readLine().trim()).equals("quit")) { // while¹®À» ÅëÇØ¼­ ¿©·¯¹ø ÀÔ·Â.
-				fos.write(imsi.getBytes());
-			}*/
-			File file = new File("d:\\JunFe.txt");
-			fis = new FileInputStream(file);
-			String i = "";
-			while(true){
-				System.out.write(i.getBytes());
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		} finally {
-			try {
-			/*if(br!=null)br.close(); // ¸Ş¸ğ¸®¸¦ ÀÚÀ¯°ø°£À¸·Î µ¹·ÁÁÜ(?)
-			if(fos!=null)fos.close();*/
-			if(fis!=null)fis.close();	
-			} catch (Exception e2) {
-				// TODO: handle exception
-			}
-		}
-	}
-	
-	public static void main(String[] args) throws IOException{
-		IoEx2 i = new IoEx2();
-		i.conToFa1();
-		//i.conToFa2();
-		//i.faToCon();
-	}
+   
+   public void conToFa1() throws IOException {
+      byte []fileName = new byte[50];
+      byte []contents = new byte[20];
+      
+      FileOutputStream fos = null;
+      System.out.println("FileName : ");
+      System.in.read(fileName);
+      //System.out.println("abc ".equals("abc")); // false [a][b][c][13][10][/0]
+      String sfileName = new String(fileName).trim(); // d:abc.txt
+      //System.out.println(sfileName.trim().equals("d:/abc.txt"));
+      fos = new FileOutputStream(sfileName);
+      System.out.println("Contents : ");
+      System.in.read(contents);
+      fos.write(new String(contents).trim().getBytes());
+      
+   }
+   
+   // conToCon, conToFa, faToCon, fileCopy
+   public void conToFa2() { // bufferëŠ” ì„ì‹œê¸°ì–µì¥ì¹˜
+      BufferedReader br = null; // readerë¡œ ëë‚˜ëŠ” ê²ƒì€ character ê¸°ë°˜, streamìœ¼ë¡œ ëë‚˜ëŠ” ê²ƒì€ byte ê¸°ë°˜
+      FileOutputStream fos = null;
+      String imsi = null;
+      try {
+         br=new BufferedReader(new InputStreamReader(System.in)); // consoleì—ì„œ ê°€ì ¸ì˜¤ë ¤ë©´ í•˜ì´ë¸Œë¦¬ë“œ í´ë˜ìŠ¤ì¸ inputstreamreaderë¥¼ í†µí•´ streamì„ ë°›ì•„ì•¼í•¨
+         System.out.println("FileName : ");
+         fos = new FileOutputStream(br.readLine().trim()); // readlineìœ¼ë¡œ í•œë²ˆì— ì½ì–´ì˜´
+         System.out.println("Contents : ");
+         while(!(imsi=br.readLine().trim()).equals("quit")) { // whileë¬¸ì„ í†µí•´ì„œ ì—¬ëŸ¬ë²ˆ ì…ë ¥.
+            fos.write(imsi.getBytes());
+         }
+         //fos.write(br.readLine().getBytes()); // readLineì´ Stringí˜•ì¸ë° writeëŠ” byteí˜•ì„ ë°›ìœ¼ë¯€ë¡œ getBytesë¥¼ í†µí•´ byteí˜•ìœ¼ë¡œ ë³€í™˜
+         //System.out.println(br.readLine());
+      } catch (Exception e) {
+         // TODO: handle exception
+         e.printStackTrace();
+      } finally{
+         try {
+            if(br!=null)br.close(); // ë©”ëª¨ë¦¬ë¥¼ ììœ ê³µê°„ìœ¼ë¡œ ëŒë ¤ì¤Œ(?)
+            if(fos!=null)fos.close();
+         } catch (Exception e2) {
+            // TODO: handle exception
+            e2.printStackTrace();
+         }
+      }
+   }
+   
+   public void faToCon() {
+      BufferedReader br = null;
+      FileOutputStream fos = null;
+      FileInputStream fis=null;
+      String imsi = null;
+      try {
+         
+         /*br=new BufferedReader(new InputStreamReader(System.in)); // consoleì—ì„œ ê°€ì ¸ì˜¤ë ¤ë©´ í•˜ì´ë¸Œë¦¬ë“œ í´ë˜ìŠ¤ì¸ inputstreamreaderë¥¼ í†µí•´ streamì„ ë°›ì•„ì•¼í•¨
+         System.out.println("FileName : ");
+         fos = new FileOutputStream(br.readLine().trim()); // readlineìœ¼ë¡œ í•œë²ˆì— ì½ì–´ì˜´
+         System.out.println("Contents : ");
+         while(!(imsi=br.readLine().trim()).equals("quit")) { // whileë¬¸ì„ í†µí•´ì„œ ì—¬ëŸ¬ë²ˆ ì…ë ¥.
+            fos.write(imsi.getBytes());
+         }*/
+         File file = new File("d:\\JunFe.txt");
+         fis = new FileInputStream(file);
+         String i = "";
+         while(true){
+            System.out.write(i.getBytes());
+         }
+      } catch (Exception e) {
+         // TODO: handle exception
+      } finally {
+         try {
+         /*if(br!=null)br.close(); // ë©”ëª¨ë¦¬ë¥¼ ììœ ê³µê°„ìœ¼ë¡œ ëŒë ¤ì¤Œ(?)
+         if(fos!=null)fos.close();*/
+         if(fis!=null)fis.close();   
+         } catch (Exception e2) {
+            // TODO: handle exception
+         }
+      }
+   }
+   
+   public static void main(String[] args) throws IOException{
+      IoEx2 i = new IoEx2();
+      i.conToFa1();
+      //i.conToFa2();
+      //i.faToCon();
+   }
 }

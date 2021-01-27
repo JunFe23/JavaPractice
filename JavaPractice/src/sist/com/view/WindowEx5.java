@@ -23,17 +23,17 @@ public class WindowEx5 extends JFrame implements ActionListener {
    private JButton jbtn;
    private JTextArea jTextArea;
    private JPanel jp1,jp2;   
-   private Font font=new Font("±Ã¼­", Font.BOLD,25);
+   private Font font=new Font("ê¶ì„œ", Font.BOLD,25);
    public void initFrame() {
       jp1=new JPanel(new BorderLayout());
       jp1.setFont(font);
       jp1.add("East",ip=new Label("211.63.89.99"));
-      jp1.add("West",id=new Label("Çª¸¥ÇÏ´Ã"));
+      jp1.add("West",id=new Label("í‘¸ë¥¸í•˜ëŠ˜"));
       jp2=new JPanel();
       jp2.add(tf=new TextField(50));
       tf.addActionListener(this);
       jp2.add(jbtn=new JButton("Send"));   
-      jbtn.addActionListener(this);//°¨ÁöÀÚ
+      jbtn.addActionListener(this);//ê°ì§€ì
       this.add("North",jp1);
       this.add(new JScrollPane(jTextArea=new JTextArea(),JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
       jTextArea.setFont(font);
@@ -46,7 +46,7 @@ public class WindowEx5 extends JFrame implements ActionListener {
       // TODO Auto-generated method stub
       if(e.getSource()==tf||e.getSource()==jbtn) {
          if(tf.getText().length()==0) {
-            JOptionPane.showMessageDialog(this, "±ÛÀÚÀÔ·Â");
+            JOptionPane.showMessageDialog(this, "ê¸€ìì…ë ¥");
             return;
          }         
          jTextArea.append(tf.getText()+"\n");
@@ -75,7 +75,3 @@ public class WindowEx5 extends JFrame implements ActionListener {
    }
 
 }
-
-
-
-
