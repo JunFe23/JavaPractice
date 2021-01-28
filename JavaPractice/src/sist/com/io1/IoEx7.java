@@ -4,10 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -24,7 +30,7 @@ public class IoEx7 extends JFrame implements ActionListener{
    JMenuBar jmb;
    JMenu file,edit,source;
    JMenuItem newItem,openItem,closeItem,saveItem,exitItem;
-   JMenuItem fontItem, colorItem;
+   JMenuItem fontItem,colorItem;
    String []path={"e:\\img\\new.gif","e:\\img\\save.gif","e:\\img\\close.gif"};
    ImageIcon []icon=new ImageIcon[path.length];
    JTextArea jta;
@@ -32,19 +38,20 @@ public class IoEx7 extends JFrame implements ActionListener{
    JFileChooser fileCh=new JFileChooser();
    
    
+   
+   
    public JTextArea getJta() {
-	   return jta;
+      return jta;
    }
    public void setJta(JTextArea jta) {
-	   this.jta = jta;
+      this.jta = jta;
    }
-   
-   
-@Override
+   @Override
    public void actionPerformed(ActionEvent e) {
       // TODO Auto-generated method stub
       Object obj=e.getSource();
-      String command = e.getActionCommand(); // menuitem의 string값 반
+      String command=e.getActionCommand();
+      System.out.println(command);
       if(obj==newItem) {
          new IoEx7();
       }
@@ -52,26 +59,40 @@ public class IoEx7 extends JFrame implements ActionListener{
          //System.exit(0);
          this.dispose();
       }
-      if(obj==saveItem) {
-    	  save();
-      }
-      if(command.equals("open")){
-      //if(obj==openItem) {
-    	  System.out.println(command);
-    	  int state = fileCh.showOpenDialog(this);
-    	  if(state==JFileChooser.APPROVE_OPTION) {
-    		  open();
-    	  }
-      }
-      
       if(obj==colorItem) {
-    	 Color color = JColorChooser.showDialog(this, "", Color.white);
-    	 jta.setBackground(color); // 배경 색 변환.
+         Color color=JColorChooser.showDialog(this, "", Color.white);
+         jta.setBackground(color);
       }
       if(obj==fontItem) {
-    	  new FontDig(this);
+         new FontDig(this);
+         
+      }
+      if(command.equals("save")) {
+         save();
+      }
+      if(command.equals("open")) {
+         int state=fileCh.showOpenDialog(this);
+         if(state==JFileChooser.APPROVE_OPTION) {
+            open();
+         }
       }
       
+   }
+   public void open() {
+      jta.setText("");      
+      try {
+         BufferedReader br=null;         
+         br=new BufferedReader(new InputStreamReader(new FileInputStream(fileCh.getSelectedFile()),"UTF-8"));
+         int ch=0;
+         while((ch=br.read())!=-1)
+         jta.append(String.valueOf((char)ch));
+         
+      } catch (Exception e) {
+         // TODO: handle exception
+         e.printStackTrace();
+      }finally {
+         
+      }
       
    }
    public void iconInit() {
@@ -101,12 +122,10 @@ public class IoEx7 extends JFrame implements ActionListener{
       
       
       edit=new JMenu("Edit");
-      
-      
       source=new JMenu("Source");
-      fontItem = new JMenuItem("Font");
-      colorItem = new JMenuItem("Color");
-      source.add(fontItem);
+      fontItem=new JMenuItem("Font");
+      colorItem=new JMenuItem("Color");
+      source.add(fontItem);   
       fontItem.addActionListener(this);
       source.addSeparator();
       source.add(colorItem);
@@ -118,32 +137,9 @@ public class IoEx7 extends JFrame implements ActionListener{
       
       
    }
-   
-   public void open() {
-	   BufferedReader br = null;
-	   try {
-		   br = new BufferedReader(new FileReader(fileCh.getSelectedFile()));
-		   String temp = "";
-		   while((temp=br.readLine())!=null) {
-			   jta.append(temp);
-			   jta.append("\r\n");
-		   }
-	} catch (Exception e) {
-		// TODO: handle exception
-		e.printStackTrace();
-	} finally {
-		try {
-			if(br!=null)br.close();
-		} catch (Exception e2) {
-			// TODO: handle exception
-			e2.printStackTrace();
-		}
-	}
-   }
-   
    public void save() {
-       BufferedWriter bw=null;
-       fileCh.showSaveDialog(this);
+      /* BufferedWriter bw=null;
+       fileCh.showSaveDialog(this);       
        try {
           bw=new BufferedWriter(new FileWriter(fileCh.getSelectedFile()));
           bw.write(jta.getText());
@@ -151,6 +147,20 @@ public class IoEx7 extends JFrame implements ActionListener{
       } catch (Exception e) {
          // TODO: handle exception
          e.printStackTrace();
+      }*/
+      FileOutputStream fos=null;
+      OutputStreamWriter oos=null;
+      BufferedWriter bw=null;
+      fileCh.showSaveDialog(this);
+      try {
+         fos=new FileOutputStream(fileCh.getSelectedFile());
+         oos=new OutputStreamWriter(fos, "UTF-8");
+         bw=new BufferedWriter(oos);
+         bw.write(jta.getText());
+         bw.flush();
+         
+      } catch (Exception e) {
+         // TODO: handle exception
       }
       dispose();
    }
@@ -164,7 +174,7 @@ public class IoEx7 extends JFrame implements ActionListener{
          public void windowClosing(WindowEvent e) {
             // TODO Auto-generated method stub
             if(jta.getText().length()!=0) {               
-               switch (JOptionPane.showConfirmDialog(IoEx7.this,"저장원해??")) {
+               switch (JOptionPane.showConfirmDialog(IoEx7.this,"종료할거니?")) {
                case JOptionPane.YES_OPTION:
                     int rs=fileCh.showSaveDialog(IoEx7.this);
                     if(rs==JFileChooser.APPROVE_OPTION) {
@@ -194,6 +204,7 @@ public class IoEx7 extends JFrame implements ActionListener{
    }
 
 }
+
 
 
 
