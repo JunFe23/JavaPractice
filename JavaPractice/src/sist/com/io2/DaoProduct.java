@@ -8,6 +8,29 @@ public class DaoProduct {
 		vector = AdminProcess.getVectorList();
 	}
 	
+	public static Vector<ProductMember> getAllData(){
+		return AdminProcess.getVectorList();
+	}
+	
+	public static void modifyMember(ProductMember member) {
+		vector = AdminProcess.getVectorList();
+		
+	}
+	
+	public static void insertMember(ProductMember member) {
+		vector = AdminProcess.getVectorList();
+		vector.add(member);
+		AdminProcess.saveAsMember(vector);
+	}
+	
+	public static boolean idUnique(String id) {
+		for (int i = 0; i < vector.size(); i++) {
+			if(vector.get(i).getId().equals(id))
+				return true;
+		}
+		return false;		
+	}
+	
 	public static Boolean idPassCheck(String id, String password) {
 		for(ProductMember m : vector) {
 			if(m.getId().equals(id)&&m.getPassword().equals(password)) {

@@ -31,6 +31,25 @@ public class AdminProcess {
 	}
 	
 	
+	public static void saveAsMember(Vector<ProductMember> member) {
+		ObjectOutputStream oos = null;
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream(PATH));
+			oos.writeObject(member);
+			oos.flush();
+			System.out.println("FileSuccess");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			try {
+				if(oos!=null)oos.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
 	public void addMember() {
 		vector.add(new ProductMember("김준철", "JunFe123", "kkk123"));
 		vector.add(new ProductMember("김성빈", "king123", "kkk123"));
