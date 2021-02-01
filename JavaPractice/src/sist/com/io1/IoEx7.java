@@ -29,7 +29,7 @@ import javax.swing.JTextArea;
 public class IoEx7 extends JFrame implements ActionListener{
    JMenuBar jmb;
    JMenu file,edit,source;
-   JMenuItem newItem,openItem,closeItem,saveItem,exitItem;
+   JMenuItem newItem,openItem,closeItem,saveItem,exitItem, copy, cut;
    JMenuItem fontItem,colorItem;
    String []path={"e:\\img\\new.gif","e:\\img\\save.gif","e:\\img\\close.gif"};
    ImageIcon []icon=new ImageIcon[path.length];
@@ -122,6 +122,13 @@ public class IoEx7 extends JFrame implements ActionListener{
       
       
       edit=new JMenu("Edit");
+      edit.add(copy = new JMenuItem("Copy"));
+      edit.addSeparator();
+      edit.add(cut = new JMenuItem("Cut"));
+      edit.addSeparator();
+      
+      
+      
       source=new JMenu("Source");
       fontItem=new JMenuItem("Font");
       colorItem=new JMenuItem("Color");

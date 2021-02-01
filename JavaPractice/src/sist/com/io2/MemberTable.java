@@ -3,7 +3,7 @@ package sist.com.io2;
 import javax.swing.table.AbstractTableModel;
 
 public class MemberTable extends AbstractTableModel{
-	public object data [][];
+	public Object data [][];
 	String []name = {"Id","Password","Name"};
 	
 	@Override
@@ -15,13 +15,13 @@ public class MemberTable extends AbstractTableModel{
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		return ;
+		return 1;
 	}
 	
 	@Override
 	public Object getValueAt(int arg0, int arg1) {
 		// TODO Auto-generated method stub
-		return data[rowIndex][columnIndex];
+		return data;
 	}
 	
 	@Override
