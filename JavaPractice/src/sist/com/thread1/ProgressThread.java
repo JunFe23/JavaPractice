@@ -22,7 +22,7 @@ public class ProgressThread extends Thread{
 		boolean isStop = false;
 		int count = 0;
 		while(!isStop) {
-			if(count>=1000)break;
+			if(count>100)break;
 			try {
 				count+=(int)(Math.random()*10)+1;
 				jp.setValue(count);

@@ -18,16 +18,19 @@ public class ThreadEx3 extends JFrame implements ActionListener{
 	
 	
 	@Override
-	public void actionPerformed(ActionEvent var1) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		//jpBars[0].setValue(++cnt);
-		jbtn[0].setEnabled(false); // 계속 눌러도 엉키지 않게 해줌. 한번만 반응.
-		jbtn[1].setEnabled(false); // 계속 눌러도 엉키지 않게 해줌. 한번만 반응.
-		jbtn[2].setEnabled(false); // 계속 눌러도 엉키지 않게 해줌. 한번만 반응.
+		//jbtn[0].setEnabled(false); // 계속 눌러도 엉키지 않게 해줌. 한번만 반응.
+		//jbtn[1].setEnabled(false); // 계속 눌러도 엉키지 않게 해줌. 한번만 반응.
+		//jbtn[2].setEnabled(false); // 계속 눌러도 엉키지 않게 해줌. 한번만 반응.
 		ProgressThread[] pt = new ProgressThread[3];
 		for (int i = 0; i < pt.length; i++) {
+			if(e.getSource()==jbtn[i]) {
+			jbtn[i].setEnabled(false);
 			pt[i]=new ProgressThread(jpBars[i], jbtn[i], name[i]);
 			pt[i].start();
+			}
 		}
 	}
 

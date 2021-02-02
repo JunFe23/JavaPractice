@@ -32,7 +32,7 @@ public class ThreadEx1 extends Thread {
 		//t1.run(); // t1이 먼저 실행후, t2가 실행.
 		//t2.run();
 		
-		t1.start(); // start 해주면 ruanable상태. 동시에 실행됨.
+		t1.start(); // start 해주면 runnable상태. 동시에 실행됨.
 		t2.start();
 	}
 }
