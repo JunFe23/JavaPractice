@@ -1,4 +1,4 @@
-package com.sist.threadpractice;
+package sist.com.threadpractice;
 
 public class MasterEx implements Runnable{
 
@@ -16,7 +16,7 @@ public class MasterEx implements Runnable{
 		for (int i = 0; i < 20; i++) {
 			pokemonName = pokemon.pop();
 			try {
-				Thread.sleep((int)(Math.random()*700));
+				Thread.sleep((int)(Math.random()*500));
 			} catch (Exception e) {
 				// TODO: handle exception
 				e.printStackTrace();

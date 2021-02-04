@@ -1,4 +1,4 @@
-package com.sist.threadpractice;
+package sist.com.threadpractice;
 
 public class ProduceEx implements Runnable{
 	private Pokemon pokemon;
@@ -15,7 +15,7 @@ public class ProduceEx implements Runnable{
 		pokemonName = pokemon.getPokemon();
 		pokemon.push(pokemonName);
 		try {
-			Thread.sleep((int)(Math.random()*700));
+			Thread.sleep((int)(Math.random()*500));
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

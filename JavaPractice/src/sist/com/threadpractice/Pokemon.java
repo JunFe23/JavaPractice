@@ -1,4 +1,4 @@
-package com.sist.threadpractice;
+package sist.com.threadpractice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,42 +6,44 @@ import java.util.List;
 public class Pokemon {
 	private List<String> pokemonList;
 	 
-	public void Pocketmon() {
+	public void Pokemon() {
 		pokemonList = new ArrayList<String>();
 	}
 	
 	public String getPokemon() {
 		String pokemonName = null;
 		switch((int)(Math.random()*10)) {
-			case 1:
+			case 0:
 				pokemonName = "피카츄";
 				break;
-			case 2:
+			case 1:
 				pokemonName = "라이츄";
 				break;
-			case 3:
+			case 2:
 				pokemonName = "파이리";
 				break;
-			case 4:
+			case 3:
 				pokemonName = "꼬부기";
 				break;
-			case 5:
+			case 4:
 				pokemonName = "버터플";
 				break;
-			case 6:
+			case 5:
 				pokemonName = "야도란";
 				break;
-			case 7:
+			case 6:
 				pokemonName = "피죤투";
 				break;
-			case 8:
+			case 7:
 				pokemonName = "또가스";
 				break;
-			case 9:
+			case 8:
 				pokemonName = "토게피";
 				break;
-			case 10:
+			case 9:
 				pokemonName = "뮤";
+				break;
+			default:
 				break;
 		}
 		return pokemonName;
@@ -59,13 +61,14 @@ public class Pokemon {
 			}
 		}
 		pokemonName = (String)pokemonList.remove(pokemonList.size()-1);
+		System.out.println("마스터가 " + pokemonName+"를 데려갔습니다.");
 		return pokemonName;
 	}
 	
 	public synchronized void push(String pokemon) {
 		pokemonList.add(pokemon);
 		System.out.println(pokemon+"이 생성되었습니다.");
-		if((pokemonList.size())==10) {
+		if((pokemonList.size())==5) {
 			this.notify();
 		}
 	}
