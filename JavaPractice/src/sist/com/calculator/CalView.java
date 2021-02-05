@@ -26,7 +26,7 @@ public class CalView extends JFrame{
 				System.out.println("/User/junfe/Desktop/JunFe/Calculaotr/"+String.valueOf(i)+".png");
 			} else {
 				jbtn[i]=new JButton(String.valueOf(i-10));
-			}
+			} //
 		}
 		
 		
