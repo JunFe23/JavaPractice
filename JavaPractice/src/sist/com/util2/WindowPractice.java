@@ -24,7 +24,7 @@ public class WindowPractice extends JFrame{
 	
 	public class Pan extends Canvas {
 		public Pan() {
-			Font font = new Font("½Å¸íÁ¶", Font.BOLD, 50);
+			Font font = new Font("ï¿½Å¸ï¿½ï¿½ï¿½", Font.BOLD, 50);
 			this.setFont(font);
 			this.setBackground(Color.yellow);
 			this.addMouseListener(new MouseAdapter() {
@@ -62,7 +62,7 @@ public class WindowPractice extends JFrame{
 		@Override
 		public void paint(Graphics g) {
 			// TODO Auto-generated method stub
-			//g.drawString("¹Ùº¸ x = " + x + "  y = " + y, x, y);
+			//g.drawString("ï¿½Ùºï¿½ x = " + x + "  y = " + y, x, y);
 			g.fillOval(x, y, 50, 50);
 			
 		}
