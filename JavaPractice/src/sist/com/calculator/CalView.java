@@ -11,6 +11,7 @@ import java.awt.Rectangle;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.Action;
@@ -32,6 +33,10 @@ public class CalView extends JFrame{
 	private Image[] originImg = new Image[10];
 	private Image[] afterImg = new Image[10];
 	private ImageIcon[] afterIcon = new ImageIcon[10];
+	private String[] a = {".","Del","AC","+/-","%","÷","×","-","+","="};
+	
+	private ArrayList<String> equation = new ArrayList<String>();
+	private String num = "";
 	
 	
 	public void initFrame() { // 전체 프레임 설정.
@@ -49,7 +54,8 @@ public class CalView extends JFrame{
 		
 		for (int i = 0; i < jbtn.length; i++) { // button값 넣어주기.
 			if(i<10) {
-				jbtn[i]=new JButton(afterIcon[i]);
+				//jbtn[i]=new JButton(afterIcon[i]);
+				jbtn[i]=new JButton(a[i]);
 			} else {
 				jbtn[i]=new JButton(String.valueOf(i-10));
 			} //
@@ -89,7 +95,7 @@ public class CalView extends JFrame{
 		jp[2].setBackground(Color.gray);
 		
 		// jtextfield로 계산기 결과부 구현.
-		inputSpace = new JTextField("0");
+		inputSpace = new JTextField("");
 		inputSpace.setEditable(false);
 		inputSpace.setBackground(Color.white);
 		inputSpace.setHorizontalAlignment(JTextField.RIGHT);
@@ -101,7 +107,7 @@ public class CalView extends JFrame{
 		this.add("South",jp[2]);
 		
 		// 동작 구현부
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < jbtn.length; i++) {
 			jbtn[i].addActionListener(new Calculate());
 		}
 		
@@ -113,7 +119,7 @@ public class CalView extends JFrame{
 	public CalView() { // 계산기 외형.
 		initFrame();
 		this.setTitle("JunFe's Calculator");
-		this.setBounds(0,0,280,280);
+		this.setBounds(0,0,320,240);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
@@ -123,32 +129,70 @@ public class CalView extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if(e.getSource()==jbtn[0]) { // .
-				inputSpace.setText(".");
-			} else if(e.getSource()==jbtn[1]) { // backspace
-				inputSpace.setText(" ");
-			} else if(e.getSource()==jbtn[2]) { // AC
-				inputSpace.setText("0");
+			if(e.getSource()==jbtn[2]) { // AC
+				inputSpace.setText("");
 			} else if(e.getSource()==jbtn[3]) { // +/-
-				inputSpace.setText("0");
-			} else if(e.getSource()==jbtn[4]) { // %
-				inputSpace.setText("0");
-			} else if(e.getSource()==jbtn[5]) { // /
-				inputSpace.setText("0");
-			} else if(e.getSource()==jbtn[6]) { // *
-				inputSpace.setText("0");
-			} else if(e.getSource()==jbtn[7]) { // -
-				inputSpace.setText("0");
-			} else if(e.getSource()==jbtn[8]) { // +
-				inputSpace.setText("0"); 
+				
 			} else if(e.getSource()==jbtn[9]) { // =
-				inputSpace.setText("0");
+				String result = Double.toString(calculate(inputSpace.getText()));
+				inputSpace.setText(""+result);
+				num = "";
 			} else {
 				inputSpace.setText(inputSpace.getText()+e.getActionCommand());
 			}
 		}
 	}
+	
+	public void fullTextParsing(String inputText) {
+		equation.clear();
+		
+		for(int i = 0; i < inputText.length(); i++) {
+			char ch = inputText.charAt(i);
+			
+			if (ch=='+'||ch=='-'||ch=='×'||ch=='÷') {
+				equation.add(num);
+				num = "";
+				equation.add(ch+"");
+			} else {
+				num = num + ch;
+			}
+		}
+		equation.add(num);
+	}
 
+	public double calculate(String inputText) {
+		fullTextParsing(inputText);
+		
+		double prev = 0;
+		double current = 0;
+		String mode = "";
+		
+		for(String s:equation) {
+			if(s.equals("+")) {
+				mode = "add";
+			} else if(s.equals("-")) {
+				mode = "sub";
+			} else if(s.equals("×")) {
+				mode = "mul";
+			} else if(s.equals("÷")) {
+				mode = "div";
+			} else {
+				current = Double.parseDouble(s);
+				if (mode=="add") {
+					prev += current;
+				} else if (mode=="sub") {
+					prev -= current;
+				} else if (mode=="mul") {
+					prev *= current;
+				} else if (mode=="div") {
+					prev /= current;
+				} else {
+					prev = current;
+				}
+			}
+		}
+		return prev;
+	}
 	
 	
 	
