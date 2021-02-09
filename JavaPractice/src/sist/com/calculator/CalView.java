@@ -143,18 +143,18 @@ public class CalView extends JFrame{
 		}
 	}
 	
-	public void fullTextParsing(String inputText) {
+	public void fullTextParsing(String inputText) { // inputText의 문자들을 한글자씩 스캔.
 		equation.clear();
 		
-		for(int i = 0; i < inputText.length(); i++) {
+		for(int i = 0; i < inputText.length(); i++) { // ch로 한글자씩 받음.
 			char ch = inputText.charAt(i);
 			
-			if (ch=='+'||ch=='-'||ch=='×'||ch=='÷') {
-				equation.add(num);
-				num = "";
-				equation.add(ch+"");
+			if (ch=='+'||ch=='-'||ch=='×'||ch=='÷') { // ch가 연산자일 경우.
+				equation.add(num); // equation에 기존 num을 넣고.
+				num = ""; // num 초기화.
+				equation.add(ch+""); // equation에 사칙연산 기호 넣고 뒤에 빈칸.
 			} else {
-				num = num + ch;
+				num = num + ch; // 숫자일 경우 숫자가 String형으로 들어감.
 			}
 		}
 		equation.add(num);
@@ -167,7 +167,7 @@ public class CalView extends JFrame{
 		double current = 0;
 		String mode = "";
 		
-		for(String s:equation) {
+		for(String s:equation) { 
 			if(s.equals("+")) {
 				mode = "add";
 			} else if(s.equals("-")) {
@@ -177,7 +177,7 @@ public class CalView extends JFrame{
 			} else if(s.equals("÷")) {
 				mode = "div";
 			} else {
-				current = Double.parseDouble(s);
+				current = Double.parseDouble(s); // String을 Double형으로 변환.
 				if (mode=="add") {
 					prev += current;
 				} else if (mode=="sub") {
