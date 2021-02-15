@@ -40,6 +40,7 @@ public class ThreadEx2 implements Runnable {
 		Thread t2 = new Thread(tr,"효진");
 		t1.start();
 		t2.start();
+		System.out.println("end");
 	}
 	
 }
